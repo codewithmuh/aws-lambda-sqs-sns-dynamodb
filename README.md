@@ -1,36 +1,24 @@
-# aws-lambda-sqs-sns-dynamodb
+# AWS Lambda, SQS, SNS, DynamoDB
 
+## Serverless Architecture with AWS Services
 
+This repository illustrates the implementation of a serverless architecture utilizing various AWS services: AWS Lambda, Amazon SQS, Amazon SNS, Amazon DynamoDB, and Amazon API Gateway. The AWS Command Line Interface (CLI) is utilized for managing these services.
 
-# Serverless Architecture with AWS Services
+### Overview
 
-This project demonstrates the implementation of a serverless architecture using various AWS services like AWS Lambda, Amazon SQS, Amazon SNS, Amazon DynamoDB, and Amazon API Gateway. The AWS Command Line Interface (CLI) is employed for managing these services.
+In this project, we will create 3 Lambda functions that will:
 
-## Overview
+1. Send a message to the SQS queue when an HTTP API Gateways endpoint is reached.
+2. Get the messages from SQS and send them to an SNS topic we have subscribed to by email.
+3. Receive the SNS notification and place the message into a DynamoDB table for record keeping.
 
-The primary objective of this project is to showcase the integration of different AWS services to construct a scalable and efficient serverless architecture. Below is a brief description of each component:
+#### Prerequisites
 
-### AWS Lambda
+- AWS account with non-root user and administrative access
+- Boto3/AWS CLI/Python3 (at least Python 3.9) installed on your local machine or virtual machine
+- Experience with AWS CLI, Python, and AWS Console
 
-Implementation of serverless functions to execute specific tasks triggered by events or designated actions.
+For installation and setup:
 
-### Amazon SQS
-
-Setting up message queues for decoupled communication between components or services, ensuring reliable message delivery and scalability.
-
-### Amazon SNS
-
-Creation of topics for publishing and subscribing to notifications, allowing multiple endpoints to receive messages simultaneously.
-
-### Amazon DynamoDB
-
-Establishment of a NoSQL database for efficient data storage and retrieval, providing scalability and low-latency performance.
-
-### Amazon API Gateway
-
-Configuration of an API Gateway to develop, publish, monitor, and secure RESTful APIs, enabling interaction with Lambda functions and the overall system.
-
-### AWS CLI
-
-Utilization of the AWS Command Line Interface for automating the provisioning, configuration, and management of AWS services, ensuring streamlined deployment and maintenance.
-
+- [AWS CLI installation guide](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+- [Python/Boto3 installation guide](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html)
