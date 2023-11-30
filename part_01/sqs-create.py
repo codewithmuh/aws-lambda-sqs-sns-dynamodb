@@ -1,18 +1,13 @@
-## Script that creates a Standard SQS Queue
+import boto3  # Import boto3 for AWS services interaction
 
-## Import the boto3 client
-import boto3
-
-## Get the service resource for SQS
+# Get the service resource for SQS
 sqs = boto3.resource('sqs')
 
-## Create the queue. This returns an SQS queue. Enter your own desired queue name. 
+# Create an SQS queue. Replace 'your-queue-name' with your desired queue name
 queue = sqs.create_queue(QueueName='your-queue-name')
 
-## Print the queue url for record
-print(queue.url)
-
-
+# Print the URL of the created queue for reference
+print("Queue URL:", queue.url)
 
 
 # source: youtube.com/@codewithmuh 

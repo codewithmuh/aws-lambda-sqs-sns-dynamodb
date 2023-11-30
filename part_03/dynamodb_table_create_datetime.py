@@ -1,43 +1,35 @@
-
 import boto3
 
-##Get the service resource.                        ##Set appropriate region
+# Get the DynamoDB service resource and specify the region as 'us-east-1'
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 
-##Create the DynamoDB table.
+# Create a DynamoDB table.
 table = dynamodb.create_table(
     TableName='DateTime-Table',
     KeySchema=[
         {
             'AttributeName': 'DateTime',
-            'KeyType': 'HASH'  ##Partition key
+            'KeyType': 'HASH'  # Partition key
         },
         {
             'AttributeName': 'ID',
-            'KeyType': 'RANGE'  ##Sort key
+            'KeyType': 'RANGE'  # Sort key
         }
     ],
     AttributeDefinitions=[
         {
             'AttributeName': 'DateTime',
-            'AttributeType': 'S'  ##S is for string attribute
+            'AttributeType': 'S'  # 'S' denotes a string attribute
         },
         {
             'AttributeName': 'ID',
-            'AttributeType': 'N'  ##N is for number attibute
-        },
-
+            'AttributeType': 'N'  # 'N' denotes a number attribute
+        }
     ],
     ProvisionedThroughput={
-        'ReadCapacityUnits': 10,
-        'WriteCapacityUnits': 10
+        'ReadCapacityUnits': 10,   # Number of read capacity units provisioned
+        'WriteCapacityUnits': 10   # Number of write capacity units provisioned
     }
 )
-print("Table status:", table.table_status) ##print table status
 
-
-
-
-
-# source: youtube.com/@codewithmuh 
-# Email: codewithmuh@gmail.com 
+print("Table status:", table.table_status)  # Print the table status

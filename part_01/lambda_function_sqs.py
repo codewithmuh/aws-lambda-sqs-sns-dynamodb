@@ -1,32 +1,31 @@
-import json ## Import json for the return portion of code
-import boto3 ## Import boto3 to work with AWS
-from datetime import datetime ## Import datetime so we can get...date and time
+import json  # Import json for handling JSON data
+import boto3  # Import boto3 to work with AWS services
+from datetime import datetime  # Import datetime to work with dates and times
 
-## Start of fuction
+# Start of function
 def lambda_handler(event, context):
-    
-    ## Creating a variable for the date and time
+    # Creating a variable for the current date and time
     now = datetime.now()
-    ## Create another variable to take the 'now' 
-    ## and place it into the message body as hour, min, second, month, day and year
+
+    # Formatting the date and time to display in a specific format
     time_date = now.strftime("%H:%M:%S %m/%d/%Y")
 
-    ## Calling the SQS client
+    # Initializing the SQS client
     sqs = boto3.client('sqs')
     
-    ## Sending message to the SQS queue we created
-    ## This is where you want to enter the URL we copied down from earlier
-    ## that points to your SQS queue
-    sqs.send_message(QueueUrl="https://queue.amazonaws.com/************/your-queue-name-here",
-    MessageBody=time_date)
+    # Sending a message to the specified SQS queue
+    # Replace the QueueUrl with your actual SQS queue URL
+    sqs.send_message(
+        QueueUrl="https://queue.amazonaws.com/************/your-queue-name-here",
+        MessageBody=time_date
+    )
     
-    ## Return message for successful Lambda execution,
-    ## which will show up when you test the function
+    # Return a success message indicating the Lambda execution was successful
     return {
         'statusCode': 200,
-        'body': json.dumps('Im so triggered right now')
+        'body': json.dumps('The message was sent successfully.')
     }
-    
+
     
 # source: youtube.com/@codewithmuh 
 # Email: codewithmuh@gmail.com   
